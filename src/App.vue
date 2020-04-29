@@ -1,71 +1,60 @@
 <template>
-  <div id="app">
-    <button @click="getMusic">Go</button>
-    <div v-for="(singer, index) in data" :key="index">
-      {{ singer.name }}
-    </div>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="primary"
+      dark
+    >
+      <div class="d-flex align-center">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          transition="scale-transition"
+          width="40"
+        />
+
+        <v-img
+          alt="Vuetify Name"
+          class="shrink mt-1 hidden-sm-and-down"
+          contain
+          min-width="100"
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
+          width="100"
+        />
+      </div>
+
+      <v-spacer></v-spacer>
+
+      <v-btn
+        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        target="_blank"
+        text
+      >
+        <span class="mr-2">Latest Release</span>
+        <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>
+    </v-app-bar>
+
+    <v-content>
+      <HelloWorld/>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import qs from "querystring";
+import HelloWorld from './components/HelloWorld';
 
 export default {
-  name: "App",
-  data() {
-    return {
-      access_token: "",
-      search: {
-        q: "jay",
-        type: "artist",
-        territory: "TW",
-      },
-      data: {},
-    };
+  name: 'App',
+
+  components: {
+    HelloWorld,
   },
-  components: {},
-  methods: {
-    getToken() {
-      const url = `https://cors-anywhere.herokuapp.com/${process.env.VUE_APP_KKBOXAUTH}`;
-      const config = {
-        headers: { "content-type": "application/x-www-form-urlencoded" },
-      };
-      const oauth = {
-        grant_type: process.env.VUE_APP_GRANTTYPE,
-        client_id: process.env.VUE_APP_CLINETID,
-        client_secret: process.env.VUE_APP_CLIENTSECRET,
-      };
-      this.$http.post(url, qs.stringify(oauth), config).then((res) => {
-        this.access_token = res.data.access_token;
-      });
-    },
-    getMusic() {
-      const config = {
-        headers: { Authorization: `Bearer ${this.access_token}` },
-      };
-      this.$http
-        .get(
-          `${process.env.VUE_APP_KKBOXAPI}search?${qs.stringify(this.search)}`,
-          config
-        )
-        .then((res) => {
-          this.data = res.data.artists.data;
-        });
-    },
-  },
-  created() {
-    this.getToken();
-  },
+
+  data: () => ({
+    //
+  }),
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
