@@ -1,16 +1,21 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import Layout from "./views/Layout";
-
 Vue.use(VueRouter);
 
 const router = new VueRouter({
   routes: [
     {
       path: "/",
-      component: Layout,
-      // component: () => import(/* webpackChunkName:"index" */ "./components/HelloWorld.vue")
+      component: () =>
+        import(/* webpackChunkName:"index" */ "./views/Layout.vue"),
+      children: [
+        {
+          path: "/",
+          component: () =>
+            import(/* webpackChunkName:"Chart" */ "./views/Chart.vue"),
+        },
+      ],
     },
   ],
 });
