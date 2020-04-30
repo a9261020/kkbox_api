@@ -3,15 +3,21 @@
     <!-- nav -->
     <nav>
       <ul>
-        <li><a href="">KKBOX練習</a></li>
+        <li class="nav-title"><a href="">KK聽歌榜</a></li>
         <li>
-          <input type="text" />
+          <input
+            class="search-input"
+            type="text"
+            placeholder="請輸入關鍵字搜尋歌曲"
+          />
         </li>
         <li>
-          <button>Search</button>
+          <button class="search-btn">搜尋</button>
         </li>
       </ul>
     </nav>
+
+    <div class="bg-animation"></div>
 
     <!-- footer -->
     <footer>
@@ -19,23 +25,27 @@
         <div class="col-3 tech">
           <h3 class="col-3-title">技術運用</h3>
           <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            <li><span>KKBOX Open API</span></li>
+            <li><span>YouTube Data API</span></li>
+            <li><span>Vue Cli 3</span></li>
           </ul>
         </div>
         <div class="col-3 source">
           <h3 class="col-3-title">參考資源</h3>
           <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            <li><span>六角學院</span></li>
+            <li><span>KKBOX API Reference</span></li>
+            <li><span>Google API Reference</span></li>
           </ul>
         </div>
 
         <div class="col-6">
-          <input type="text" />
-          <button>Search</button>
+          <input
+            class="search-input"
+            type="text"
+            placeholder="請輸入關鍵字搜尋歌曲"
+          />
+          <button class="search-btn">搜尋</button>
         </div>
       </div>
     </footer>
