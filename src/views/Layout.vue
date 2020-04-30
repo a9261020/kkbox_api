@@ -1,5 +1,7 @@
 <template>
-  <div class="layout"></div>
+  <div class="layout">
+    12345
+  </div>
 </template>
 
 <script>

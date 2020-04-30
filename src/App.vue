@@ -1,9 +1,6 @@
 <template>
   <div id="app">
     <router-view />
-    <v-text-field v-model="access_token"></v-text-field>
-    <v-btn @click="getMusic">Go</v-btn>
-    <div v-for="(singer, index) in data" :key="index">{{ singer.name }}</div>
   </div>
 </template>
 
@@ -59,11 +56,6 @@ export default {
 };
 </script>
 
-<style>
-body {
-  margin: 0;
-  padding: 0;
-  color: white;
-  background-color: gray;
-}
+<style lang="scss">
+@import "./assets/scss/index.scss";
 </style>

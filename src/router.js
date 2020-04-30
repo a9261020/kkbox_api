@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import HelloWorld from "./components/HelloWorld";
+import Layout from "./views/Layout";
 
 Vue.use(VueRouter);
 
@@ -9,7 +9,7 @@ const router = new VueRouter({
   routes: [
     {
       path: "/",
-      component: HelloWorld,
+      component: Layout,
       // component: () => import(/* webpackChunkName:"index" */ "./components/HelloWorld.vue")
     },
   ],
