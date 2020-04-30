@@ -23,18 +23,7 @@ export default {
   components: {},
   methods: {
     getToken() {
-      const url = `https://cors-anywhere.herokuapp.com/${process.env.VUE_APP_KKBOXAUTH}`;
-      const config = {
-        headers: { "content-type": "application/x-www-form-urlencoded" },
-      };
-      const oauth = {
-        grant_type: process.env.VUE_APP_GRANTTYPE,
-        client_id: process.env.VUE_APP_CLINETID,
-        client_secret: process.env.VUE_APP_CLIENTSECRET,
-      };
-      this.$http.post(url, qs.stringify(oauth), config).then((res) => {
-        this.access_token = res.data.access_token;
-      });
+      this.$store.dispatch("getToken");
     },
     getMusic() {
       const config = {
