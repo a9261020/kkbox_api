@@ -17,9 +17,6 @@
       </ul>
     </nav>
 
-    <!-- bg-animation -->
-    <div class="bg-animation"></div>
-
     <router-view />
 
     <!-- footer -->

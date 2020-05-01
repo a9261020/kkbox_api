@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <!-- bg-animation -->
+    <div class="bg-animation"></div>
     <router-view />
   </div>
 </template>

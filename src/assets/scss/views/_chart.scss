@@ -1,17 +1,18 @@
 .chart {
-  height: 100vh;
+  height: 100%;
   padding: 6% 10%;
+  hr {
+    margin: 0 0 2% 0;
+  }
   .chart-title {
     font-size: 2rem;
     padding: 1.5rem 0;
     display: inline-block;
   }
   .chart-list {
-    margin: 0 0 2% 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid white;
   }
   .chart-list-btn {
     border: 1px solid white;

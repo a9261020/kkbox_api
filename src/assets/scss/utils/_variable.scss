@@ -4,6 +4,8 @@ $bg-color2: #49a09d;
 $btn-primary: #17a2b8;
 
 body {
+  position: relative;
+  min-height: 100%;
   color: white;
   font-size: 16px;
   font-family: "Noto Sans TC", sans-serif !important;
