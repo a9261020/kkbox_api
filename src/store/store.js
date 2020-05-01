@@ -8,7 +8,8 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    access_token: "",
+    access_token: "abc",
+    data: [],
   },
   actions: {
     getToken(context) {
@@ -22,13 +23,27 @@ const store = new Vuex.Store({
         client_secret: process.env.VUE_APP_CLIENTSECRET,
       };
       Axios.post(url, qs.stringify(oauth), config).then((res) => {
-        context.commit("GET_TOKEN", res.data.access_token);
+        context.commit("SET_TOKEN", res.data.access_token);
+        context.dispatch("getData");
       });
+    },
+    getData(context) {
+      const config = {
+        headers: { Authorization: `Bearer ${context.state.access_token}` },
+      };
+      Axios.get("https://api.kkbox.com/v1.1/charts?territory=TW", config).then(
+        (res) => {
+          context.commit("GET_DATA", res.data.data);
+        }
+      );
     },
   },
   mutations: {
-    GET_TOKEN(state, access_token) {
+    SET_TOKEN(state, access_token) {
       state.access_token = access_token;
+    },
+    GET_DATA(state, data) {
+      state.data = data;
     },
   },
   getters: {},
