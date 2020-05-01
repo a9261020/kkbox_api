@@ -1,0 +1,26 @@
+.song-list {
+  width: 100%;
+  .song-list-item {
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 0 0 16px 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    .item-rank {
+      width: 100px;
+      text-align: center;
+      font-size: 2rem;
+      font-family: "Press Start 2P", cursive;
+    }
+    .item-img {
+      max-width: 100px;
+    }
+    .item-info {
+      padding: 1.25rem;
+      font-size: 1.25rem;
+      .item-songTitle {
+        margin: 0 0 16px 0;
+      }
+    }
+  }
+}

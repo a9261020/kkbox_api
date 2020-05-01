@@ -6,13 +6,14 @@
     padding: 1.5rem 0;
     display: inline-block;
   }
-  .top5-chart {
+  .chart-list {
+    margin: 0 0 2% 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid white;
   }
-  .chart-top5-btn {
+  .chart-list-btn {
     border: 1px solid white;
     border-radius: 8%;
     padding: 0.75rem;
