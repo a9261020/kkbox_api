@@ -1,12 +1,12 @@
 <template>
   <div class="card">
     <div class="card-container">
-      <div class="card-item" v-for="item in 5" :key="item">
-        <a href=""
-          ><img class="card-img" src="http://fakeimg.pl/100x100" alt="" />
+      <div class="card-item" v-for="chart in charts" :key="chart.id">
+        <router-link :to="`/SongList?id=${chart.id}&title=${chart.title}`"
+          ><img class="card-img" :src="chart.images[0].url" alt="" />
           <div class="card-category">
-            {{ item }}
-          </div></a
+            {{ chart.title }}
+          </div></router-link
         >
       </div>
     </div>
@@ -14,7 +14,15 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Card",
+  props: {
+    charts: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+  },
+};
 </script>
-
-<style></style>
