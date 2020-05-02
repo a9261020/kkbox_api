@@ -1,11 +1,7 @@
 <template>
-  <div class="song-list">
+  <div class="list">
     <ul>
-      <li
-        class="song-list-item"
-        v-for="(song, index) in newSongs"
-        :key="song.id"
-      >
+      <li class="list-item" v-for="(song, index) in newSongs" :key="song.id">
         <div class="item-rank ds-inline-block">
           {{ index + 1 }}
         </div>
@@ -21,6 +17,7 @@
 
 <script>
 export default {
+  name: "List",
   props: {
     newSongs: {
       type: Array,

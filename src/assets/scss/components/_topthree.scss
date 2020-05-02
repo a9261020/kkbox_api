@@ -1,0 +1,33 @@
+.topthree {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .topthree-item {
+    width: 30%;
+    max-width: 30%;
+    .item-img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+    }
+    .item-info {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 0 0 10px 10px;
+      display: flex;
+      align-items: center;
+      .item-rank {
+        text-align: center;
+      }
+      h4 {
+        height: 100%;
+        width: 25%;
+      }
+      .item-desc {
+        width: 75%;
+        padding: 20px 20px 20px 0;
+        h4 {
+          margin: 0 0 16px 0;
+        }
+      }
+    }
+  }
+}

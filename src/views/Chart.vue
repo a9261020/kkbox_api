@@ -7,7 +7,7 @@
       </router-link>
     </div>
     <hr />
-    <SongList :newSongs="newSongs" />
+    <List :newSongs="newSongs" />
 
     <h2 class="chart-title">新歌日榜</h2>
     <hr />
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import SongList from "@/components/SongList";
+import List from "@/components/List";
 import Card from "@/components/Card";
 
 export default {
@@ -44,7 +44,7 @@ export default {
     },
   },
   components: {
-    SongList,
+    List,
     Card,
   },
 };

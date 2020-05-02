@@ -15,6 +15,11 @@ const router = new VueRouter({
           component: () =>
             import(/* webpackChunkName:"Chart" */ "./views/Chart.vue"),
         },
+        {
+          path: "/songlist",
+          component: () =>
+            import(/* webpackChunkName:"songlist" */ "./views/SongList.vue"),
+        },
       ],
     },
   ],
