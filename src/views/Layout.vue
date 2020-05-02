@@ -3,7 +3,11 @@
     <!-- nav -->
     <nav>
       <ul>
-        <li class="nav-title"><a href="">KK聽歌榜</a></li>
+        <li class="nav-title">
+          <router-link to="/">
+            KK聽歌榜
+          </router-link>
+        </li>
         <li>
           <input
             class="search-input"

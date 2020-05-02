@@ -13,11 +13,11 @@ export default {
   computed: {
     isLoading() {
       return this.$store.state.isLoading;
-    }
+    },
   },
   created() {
     this.$store.dispatch("getToken");
-  }
+  },
 };
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="songlist">
     <div class="songlist-title">
-      <h1>綜合新歌即時榜</h1>
+      <h1>{{ title }}</h1>
       <button class="songlist-btn">試聽此歌單</button>
     </div>
     <hr />
@@ -19,6 +19,7 @@ export default {
   data() {
     return {
       songslist: [],
+      title: "",
     };
   },
   components: {
@@ -36,7 +37,6 @@ export default {
         .then((res) => {
           this.$store.dispatch("loading", false);
           this.songslist = res.data.data;
-          console.log(this.songslist);
         });
     },
   },
@@ -53,6 +53,7 @@ export default {
   },
   mounted() {
     this.getSongs(this.$route.query.id);
+    this.title = this.$route.query.title;
   },
 };
 </script>
