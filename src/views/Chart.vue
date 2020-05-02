@@ -7,7 +7,7 @@
       </router-link>
     </div>
     <hr />
-    <SongList />
+    <SongList :newSongs="newSongs" />
 
     <h2 class="chart-title">新歌日榜</h2>
     <hr />
@@ -30,6 +30,9 @@ import Card from "@/components/Card";
 export default {
   name: "Chart",
   computed: {
+    newSongs() {
+      return this.$store.state.newSongsChart.slice(0, 5);
+    },
     newCharts() {
       return this.$store.state.charts.slice(1, 6);
     },
@@ -38,11 +41,11 @@ export default {
     },
     weeklyCharts() {
       return this.$store.state.charts.slice(13, 18);
-    }
+    },
   },
   components: {
     SongList,
-    Card
-  }
+    Card,
+  },
 };
 </script>

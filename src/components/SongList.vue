@@ -1,14 +1,18 @@
 <template>
   <div class="song-list">
     <ul>
-      <li class="song-list-item" v-for="item in 5" :key="item">
+      <li
+        class="song-list-item"
+        v-for="(song, index) in newSongs"
+        :key="song.id"
+      >
         <div class="item-rank ds-inline-block">
-          {{ item }}
+          {{ index + 1 }}
         </div>
-        <img class="item-img" src="http://fakeimg.pl/200x200" alt="" />
+        <img class="item-img" :src="song.album.images[0].url" alt="" />
         <div class="item-info">
-          <h5 class="item-songTitle">Change</h5>
-          <span class="item-singer">瘦子</span>
+          <h5 class="item-songTitle">{{ song.album.name }}</h5>
+          <span class="item-singer">{{ song.album.artist.name }} </span>
         </div>
       </li>
     </ul>
@@ -16,7 +20,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    newSongs: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+  },
+};
 </script>
-
-<style></style>
