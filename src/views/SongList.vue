@@ -5,7 +5,7 @@
       <button class="songlist-btn">試聽此歌單</button>
     </div>
     <hr />
-    <TopThree />
+    <TopThree :list="three" />
     <List />
   </div>
 </template>
@@ -16,9 +16,43 @@ import TopThree from "@/components/TopThree";
 
 export default {
   name: "SongList",
+  data() {
+    return {
+      songslist: [],
+    };
+  },
   components: {
     List,
-    TopThree
-  }
+    TopThree,
+  },
+  methods: {
+    getSongs(id) {
+      this.$store.dispatch("loading", true);
+      this.$http
+        .get(
+          `${process.env.VUE_APP_KKBOXAPI}charts/${id}/tracks?territory=TW&limit=25`,
+          this.config
+        )
+        .then((res) => {
+          this.$store.dispatch("loading", false);
+          this.songslist = res.data.data;
+          console.log(this.songslist);
+        });
+    },
+  },
+  computed: {
+    config() {
+      return this.$store.getters.getApiConfig;
+    },
+    three() {
+      return this.songslist.slice(0, 3);
+    },
+    rest() {
+      return this.songslist.slice(3, 25);
+    },
+  },
+  mounted() {
+    this.getSongs(this.$route.query.id);
+  },
 };
 </script>

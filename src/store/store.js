@@ -45,7 +45,7 @@ const store = new Vuex.Store({
     getNewSongsChart(context) {
       context.dispatch("loading", true);
       Axios.get(
-        `${process.env.VUE_APP_KKBOXAPI}charts/LZPhK2EyYzN15dU-PT/tracks?territory=TW&limit=25`,
+        `${process.env.VUE_APP_KKBOXAPI}charts/LZPhK2EyYzN15dU-PT/tracks?territory=TW&limit=5`,
         context.getters.getApiConfig
       ).then((res) => {
         context.dispatch("loading", false);

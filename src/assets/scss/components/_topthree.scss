@@ -7,6 +7,7 @@
     max-width: 30%;
     .item-img {
       width: 100%;
+      height: 100%;
       border-radius: 10px 10px 0 0;
     }
     .item-info {
@@ -15,17 +16,19 @@
       display: flex;
       align-items: center;
       .item-rank {
-        text-align: center;
-      }
-      h4 {
-        height: 100%;
         width: 25%;
+        text-align: center;
       }
       .item-desc {
         width: 75%;
         padding: 20px 20px 20px 0;
         h4 {
           margin: 0 0 16px 0;
+        }
+        p {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
       }
     }

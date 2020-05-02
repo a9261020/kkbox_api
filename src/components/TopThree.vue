@@ -1,12 +1,14 @@
 <template>
   <div class="topthree">
-    <div class="topthree-item" v-for="item in 3" :key="item">
-      <img class="item-img" src="http://fakeimg.pl/1000x1000" alt />
+    <div class="topthree-item" v-for="(song, index) in list" :key="song.id">
+      <img class="item-img" :src="song.album.images[2].url" alt />
       <div class="item-info">
-        <h4 class="ds-inline-block item-rank">Rank</h4>
+        <h4 class="ds-inline-block item-rank">
+          {{ index + 1 }}
+        </h4>
         <div class="ds-inline-block item-desc">
-          <h4>歌名</h4>
-          <p>歌手</p>
+          <h4>{{ song.album.name }}</h4>
+          <p>{{ song.album.artist.name }}</p>
         </div>
       </div>
     </div>
@@ -16,5 +18,10 @@
 <script>
 export default {
   name: "TopThree",
+  props: {
+    list: {
+      type: Array,
+    },
+  },
 };
 </script>
