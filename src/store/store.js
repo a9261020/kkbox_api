@@ -8,8 +8,10 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    access_token: "abc",
-    data: [],
+    access_token: "",
+    charts: [],
+    newSongsChart: [],
+    isLoading: false,
   },
   actions: {
     getToken(context) {
@@ -22,32 +24,57 @@ const store = new Vuex.Store({
         client_id: process.env.VUE_APP_CLINETID,
         client_secret: process.env.VUE_APP_CLIENTSECRET,
       };
+      context.dispatch("loading", true);
       Axios.post(url, qs.stringify(oauth), config).then((res) => {
+        context.dispatch("loading", false);
         context.commit("SET_TOKEN", res.data.access_token);
-        context.dispatch("getData");
+        context.dispatch("getCharts");
+        context.dispatch("getNewSongsChart");
       });
     },
-    getData(context) {
-      const config = {
-        headers: { Authorization: `Bearer ${context.state.access_token}` },
-      };
-      Axios.get("https://api.kkbox.com/v1.1/charts?territory=TW", config).then(
-        (res) => {
-          context.commit("GET_DATA", res.data.data);
-        }
-      );
+    getCharts(context) {
+      context.dispatch("loading", true);
+      Axios.get(
+        `${process.env.VUE_APP_KKBOXAPI}charts?territory=TW`,
+        context.getters.getApiConfig
+      ).then((res) => {
+        context.dispatch("loading", false);
+        context.commit("GET_CHARTS", res.data.data);
+      });
+    },
+    getNewSongsChart(context) {
+      context.dispatch("loading", true);
+      Axios.get(
+        `${process.env.VUE_APP_KKBOXAPI}charts/LZPhK2EyYzN15dU-PT/tracks?territory=TW&limit=25`,
+        context.getters.getApiConfig
+      ).then((res) => {
+        context.dispatch("loading", false);
+        context.commit("GET_NEWSONGS_CHART", res.data.data);
+      });
+    },
+    loading(context, status) {
+      context.commit("LOADING", status);
     },
   },
   mutations: {
     SET_TOKEN(state, access_token) {
       state.access_token = access_token;
     },
-    GET_DATA(state, data) {
-      state.data = data;
+    GET_CHARTS(state, charts) {
+      state.charts = charts;
+    },
+    GET_NEWSONGS_CHART(state, newSongsChart) {
+      state.newSongsChart = newSongsChart;
+    },
+    LOADING(state, status) {
+      state.isLoading = status;
     },
   },
-  getters: {},
-  modules: {},
+  getters: {
+    getApiConfig(state) {
+      return { headers: { Authorization: `Bearer ${state.access_token}` } };
+    },
+  },
 });
 
 export default store;

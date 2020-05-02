@@ -3,7 +3,7 @@
     <div class="chart-list">
       <h2 class="chart-title">綜合新歌 TOP 5</h2>
       <router-link to="/1234" class="chart-list-btn">
-        <a href="">完整榜單</a>
+        <a href>完整榜單</a>
       </router-link>
     </div>
     <hr />
@@ -28,9 +28,21 @@ import SongList from "@/components/SongList";
 import Card from "@/components/Card";
 
 export default {
+  name: "Chart",
+  computed: {
+    newCharts() {
+      return this.$store.state.charts.slice(1, 6);
+    },
+    dailyCharts() {
+      return this.$store.state.charts.slice(7, 12);
+    },
+    weeklyCharts() {
+      return this.$store.state.charts.slice(13, 18);
+    }
+  },
   components: {
     SongList,
-    Card,
-  },
+    Card
+  }
 };
 </script>
