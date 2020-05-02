@@ -7,7 +7,7 @@
           {{ index + 1 }}
         </h4>
         <div class="ds-inline-block item-desc">
-          <h4>{{ song.album.name }}</h4>
+          <h5>{{ song.album.name }}</h5>
           <p>{{ song.album.artist.name }}</p>
         </div>
       </div>

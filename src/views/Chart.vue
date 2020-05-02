@@ -10,7 +10,7 @@
       </router-link>
     </div>
     <hr />
-    <List :newSongs="newSongs" />
+    <List :list="newSongs" />
 
     <h2 class="chart-title">新歌日榜</h2>
     <hr />

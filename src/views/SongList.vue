@@ -6,7 +6,7 @@
     </div>
     <hr />
     <TopThree :list="three" />
-    <List />
+    <List :list="rest" :start="4" />
   </div>
 </template>
 
