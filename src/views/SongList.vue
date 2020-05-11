@@ -2,7 +2,7 @@
   <div class="songlist">
     <div class="songlist-title">
       <h1>{{ title }}</h1>
-      <button class="songlist-btn">試聽此歌單</button>
+      <button class="songlist-btn" @click="playList">試聽此歌單</button>
     </div>
     <hr />
     <TopThree :list="three" />
@@ -19,12 +19,12 @@ export default {
   data() {
     return {
       songslist: [],
-      title: ""
+      title: "",
     };
   },
   components: {
     List,
-    TopThree
+    TopThree,
   },
   methods: {
     getSongs(id) {
@@ -34,11 +34,14 @@ export default {
           `${process.env.VUE_APP_KKBOXAPI}charts/${id}/tracks?territory=TW&limit=25`,
           this.config
         )
-        .then(res => {
+        .then((res) => {
           this.$store.dispatch("loading", false);
           this.songslist = res.data.data;
         });
-    }
+    },
+    playList() {
+      this.$store.dispatch("playList", this.$route.query.id);
+    },
   },
   computed: {
     config() {
@@ -49,11 +52,11 @@ export default {
     },
     rest() {
       return this.songslist.slice(3, 25);
-    }
+    },
   },
   mounted() {
     this.getSongs(this.$route.query.id);
     this.title = this.$route.query.title;
-  }
+  },
 };
 </script>

@@ -1,12 +1,20 @@
 <template>
   <div class="musicplayer">
-    <!-- <object
-      data="https://widget.kkbox.com/v1/?id=WoEw7TlT7FdqPXCMA5&type=song&terr=TW&lang=TC"
-      width="300"
-      height="100"
-      type
-    ></object>-->
-    <object :data="setSongPlayer" width="300" height="100" type></object>
+    <i
+      class="musicplayer-cancel-btn far fa-window-close"
+      v-show="songID !== '' || listID !== ''"
+      @click="cancel"
+    ></i>
+    <object
+      class="kkbox-song"
+      :data="setSongPlayer"
+      v-show="songID !== ''"
+    ></object>
+    <object
+      class="kkbox-list"
+      :data="setListPlayer"
+      v-show="listID !== ''"
+    ></object>
   </div>
 </template>
 
@@ -19,11 +27,24 @@ export default {
     ...mapState({
       setSongPlayer(state) {
         return `https://widget.kkbox.com/v1/?id=${state.songID}&type=song&terr=TW&lang=TC&autoplay=true`;
-      }
-    })
-  }
+      },
+      setListPlayer(state) {
+        return `https://widget.kkbox.com/v1/?id=${state.listID}&type=playlist&terr=TW&lang=TC&autoplay=true`;
+      },
+      songID(state) {
+        return state.songID;
+      },
+      listID(state) {
+        return state.listID;
+      },
+    }),
+  },
+  methods: {
+    cancel() {
+      this.$store.dispatch("resetPlayer");
+    },
+  },
 };
 </script>
 
-<style>
-</style>
+<style></style>

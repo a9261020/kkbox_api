@@ -1,7 +1,12 @@
 <template>
   <div class="list">
     <ul>
-      <li class="list-item" v-for="(song, index) in list" :key="song.id" @click="playSong(song.id)">
+      <li
+        class="list-item"
+        v-for="(song, index) in list"
+        :key="song.id"
+        @click="playSong(song.id)"
+      >
         <div class="item-rank ds-inline-block">{{ index + start }}</div>
         <img class="item-img" :src="song.album.images[0].url" alt />
         <div class="item-info">
@@ -21,17 +26,17 @@ export default {
       type: Array,
       default() {
         return [];
-      }
+      },
     },
     start: {
       type: Number,
-      default: 1
-    }
+      default: 1,
+    },
   },
   methods: {
-    playSong(id) {
-      this.$store.dispatch("play", id);
-    }
-  }
+    playSong(songID) {
+      this.$store.dispatch("playSong", songID);
+    },
+  },
 };
 </script>

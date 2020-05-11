@@ -12,6 +12,7 @@ const store = new Vuex.Store({
     charts: [],
     newSongsChart: [],
     songID: "",
+    listID: "",
     isLoading: false,
   },
   actions: {
@@ -53,8 +54,14 @@ const store = new Vuex.Store({
         context.commit("GET_NEWSONGS_CHART", res.data.data);
       });
     },
-    play(context, songID) {
-      context.commit("PLAY", songID);
+    playSong(context, songID) {
+      context.commit("PLAY_SONG", songID);
+    },
+    playList(context, listID) {
+      context.commit("PLAY_LIST", listID);
+    },
+    resetPlayer(context) {
+      context.commit("RESET_PLAYER");
     },
     loading(context, status) {
       context.commit("LOADING", status);
@@ -70,8 +77,17 @@ const store = new Vuex.Store({
     GET_NEWSONGS_CHART(state, newSongsChart) {
       state.newSongsChart = newSongsChart;
     },
-    PLAY(state, songID) {
+    PLAY_SONG(state, songID) {
+      state.listID = "";
       state.songID = songID;
+    },
+    PLAY_LIST(state, listID) {
+      state.songID = "";
+      state.listID = listID;
+    },
+    RESET_PLAYER(state) {
+      state.songID = "";
+      state.listID = "";
     },
     LOADING(state, status) {
       state.isLoading = status;

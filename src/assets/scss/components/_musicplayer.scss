@@ -1,6 +1,22 @@
 .musicplayer {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   bottom: 5%;
   right: 5%;
   z-index: 5;
+  .musicplayer-cancel-btn {
+    margin: 0 0 0.5rem 0;
+    align-self: flex-end;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  .kkbox-song {
+    width: 300px;
+    height: 100px;
+  }
+  .kkbox-list {
+    width: 300px;
+    height: 500px;
+  }
 }

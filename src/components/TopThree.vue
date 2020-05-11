@@ -1,6 +1,11 @@
 <template>
   <div class="topthree">
-    <div class="topthree-item" v-for="(song, index) in list" :key="song.id">
+    <div
+      class="topthree-item"
+      v-for="(song, index) in list"
+      :key="song.id"
+      @click="playSong(song.id)"
+    >
       <img class="item-img" :src="song.album.images[2].url" alt />
       <div class="item-info">
         <h4 class="ds-inline-block item-rank">
@@ -21,6 +26,11 @@ export default {
   props: {
     list: {
       type: Array,
+    },
+  },
+  methods: {
+    playSong(songID) {
+      this.$store.dispatch("playSong", songID);
     },
   },
 };
