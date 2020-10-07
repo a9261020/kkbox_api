@@ -6,12 +6,6 @@
         <li class="nav-title">
           <router-link to="/">KK聽歌榜</router-link>
         </li>
-        <li>
-          <input class="search-input" type="text" placeholder="請輸入關鍵字搜尋歌曲" />
-        </li>
-        <li>
-          <button class="search-btn">搜尋</button>
-        </li>
       </ul>
     </nav>
 
@@ -27,9 +21,6 @@
               <span>KKBOX Open API</span>
             </li>
             <li>
-              <span>YouTube Data API</span>
-            </li>
-            <li>
               <span>Vue Cli 3</span>
             </li>
           </ul>
@@ -42,9 +33,6 @@
             </li>
             <li>
               <span>KKBOX API Reference</span>
-            </li>
-            <li>
-              <span>Google API Reference</span>
             </li>
           </ul>
         </div>
